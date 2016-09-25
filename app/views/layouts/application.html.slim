@@ -5,22 +5,25 @@ html
       | MeetingRoom
     = csrf_meta_tags
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
 
   body
     header
       nav.navbar.navbar-default
         .container-fluid
           .collapse.navbar-collapse#navbar-collapse
-            ul.nav.navbar-nav
-              li.dropdown
-                a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-                  | Salas &nbsp;
-                  span.caret
-                ul.dropdown-menu
-                  li
-                    = link_to "Listar salas", rooms_path
-                  li
-                    = link_to "Incluir sala", new_room_path
+            a.navbar-brand
+              | Reserva de Salas
+            - if current_user
+              ul.nav.navbar-nav
+                li
+                  = link_to "Listar Salas", rooms_path
+                li
+                  = link_to "Incluir Sala", new_room_path
+              ul.nav.navbar-nav.navbar-right
+                p.navbar-text
+                  = current_user.email
+                li
+                  = link_to "Sair", destroy_user_session_path, method: :delete
     = yield

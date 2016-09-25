@@ -1,0 +1,7 @@
+pt-BR:
+  hello: "Olá Mundo"
+  helpers:
+    submit:
+      room:
+        create: 'Criar Sala'
+        update: 'Atualizar Sala'

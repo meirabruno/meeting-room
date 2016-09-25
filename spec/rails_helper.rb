@@ -6,6 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'devise'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
@@ -15,7 +16,10 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers
   config.include Warden::Test::Helpers
+
   config.before :suite do
     Warden.test_mode!
   end
