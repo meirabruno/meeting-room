@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RoomBookingsController < ApplicationController
   before_action :authenticate_user!
 

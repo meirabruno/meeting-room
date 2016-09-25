@@ -37,6 +37,6 @@ RSpec.describe Room, type: :model do
     user = FactoryGirl.create(:user)
     room = FactoryGirl.create(:room)
     room_booking = RoomBooking.new(user_id: user.id, room_id: room.id, hour: "06:00", date: Date.current.at_beginning_of_week)
-    expect(room).to be_valid
+    expect(room_booking).to be_valid
   end
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'As a user', type: :feature, js: true do
@@ -16,7 +17,7 @@ describe 'As a user', type: :feature, js: true do
   end
 
   it 'I can cancel reserve room' do
-    room_booking = RoomBooking.create(user_id: user.id, room_id: room.id, date: Date.current.at_beginning_of_week, hour: "10:00")
+    RoomBooking.create(user_id: user.id, room_id: room.id, date: Date.current.at_beginning_of_week, hour: "10:00")
     visit room_path(room)
     click_link("Cancelar", match: :first)
     wait_for_ajax

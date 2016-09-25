@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
@@ -13,7 +14,7 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
 
     if @room.save
-      redirect_to  rooms_path, notice: 'Sala criada com sucesso'
+      redirect_to rooms_path, notice: 'Sala criada com sucesso'
     else
       render :new
     end

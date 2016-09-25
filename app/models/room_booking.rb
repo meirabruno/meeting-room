@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RoomBooking < ApplicationRecord
   validates :user_id, presence: true
   validates :room_id, presence: true
