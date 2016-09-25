@@ -20,6 +20,8 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers
   config.include Warden::Test::Helpers
 
+  Capybara.javascript_driver = :webkit
+
   config.before :suite do
     Warden.test_mode!
   end

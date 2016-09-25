@@ -32,7 +32,7 @@
                   - room_booking = @room_bookings.where(date: weekday, hour: schedule, room: @room)
                   - if room_booking.empty?
                     td
-                      a href="#" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }" data-reserve-room=0
+                      a href="#" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }" data-reserve-room=0 class="cpy-reserve-room"
                         | Disponível
                   - else
                     td
