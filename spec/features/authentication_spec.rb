@@ -4,7 +4,7 @@ require 'rails_helper'
 describe "User Authentication", type: :feature do
   let(:user) { FactoryGirl.create(:user, password: "123456") }
 
-  describe "I can sign in" do
+  describe "can sign in" do
     specify 'as an user' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email

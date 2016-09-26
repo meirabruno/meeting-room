@@ -14,19 +14,19 @@ describe 'As a user', type: :feature do
     room_delete.save
   end
 
-  specify 'I can list all rooms' do
+  specify 'can list all rooms' do
     visit rooms_path
     expect(page).to have_content room.name
   end
 
-  specify 'I can create new room' do
+  specify 'can create new room' do
     visit new_room_path
 
     fill_in 'room[name]', with: 'Nova sala'
     click_on 'Criar Sala'
   end
 
-  specify 'I can edit a room' do
+  specify 'can edit a room' do
     visit edit_room_path(room_edit)
     expect(page).to have_content "Editar Sala"
     fill_in 'room[name]', with: 'Novo Nome da Sala'
@@ -34,7 +34,7 @@ describe 'As a user', type: :feature do
     expect(room_edit.reload.name).to eq 'Novo Nome da Sala'
   end
 
-  specify 'I can delete a room' do
+  specify 'can delete a room' do
     visit rooms_path
 
     find(".cpy-delete-room-#{room_delete.id}").click

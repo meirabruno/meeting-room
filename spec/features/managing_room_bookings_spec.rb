@@ -9,14 +9,14 @@ describe 'As a user', type: :feature, js: true do
     sign_in user
   end
 
-  it 'I can reserve room' do
+  it 'can reserve room' do
     visit room_path(room)
     click_link("Disponível", match: :first)
     wait_for_ajax
     expect(RoomBooking.count).to eq(1)
   end
 
-  it 'I can cancel reserve room' do
+  it 'can cancel reserve room' do
     RoomBooking.create(user_id: user.id, room_id: room.id, date: Date.current.at_beginning_of_week, hour: "10:00")
     visit room_path(room)
     click_link("Cancelar", match: :first)
