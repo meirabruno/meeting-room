@@ -1,28 +1,27 @@
-.container
-  .page-header
-    h1
-      | Salas
-  .row
-    .col-sm-12
-      table.table.table-striped
-        thead
+.page-header
+  h1
+    | Salas
+.row
+  .col-sm-12
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Id
+          th
+            | Nome
+          th
+            | Ações
+      tbody
+        - @rooms.each do |room|
           tr
-            th
-              | Id
-            th
-              | Nome
-            th
-              | Ações
-        tbody
-          - @rooms.each do |room|
-            tr
-              td
-                = room.id
-              td
-                = room.name
-              td
-                = link_to 'Editar', edit_room_path(room)
-                | &nbsp; &nbsp;
-                = link_to 'Show', room_path(room)
-                | &nbsp; &nbsp;
-                = link_to 'Deletar', room_path(room), method: :delete, class: "cpy-delete-room-#{room.id}", data: {confirm: 'Tem certeza que deseja deletar esta sala?'}
+            td
+              = room.id
+            td
+              = room.name
+            td
+              = link_to 'Editar', edit_room_path(room)
+              | &nbsp; &nbsp;
+              = link_to 'Show', room_path(room)
+              | &nbsp; &nbsp;
+              = link_to 'Deletar', room_path(room), method: :delete, class: "cpy-delete-room-#{room.id}", data: {confirm: 'Tem certeza que deseja deletar esta sala?'}

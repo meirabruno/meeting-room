@@ -1,48 +1,47 @@
-.container
-  .page-header
-    h1
-      | Visualizar sala
-  .row
-    .col-sm-12
-      h3
-        = @room.name
-  .row
-    .col-sm-12
-      table.table.table-striped
-        thead
-          tr
-            td
-              | Horário
-            td
-              | Segunda
-            td
-              | Terça
-            td
-              | Quarta
-            td
-              | Quinta
-            td
-              | Sexta
-          tbody#js-chedules
-            - Room::SCHEDULES.each do | schedule|
-              tr
-                td
-                  = schedule
-                - @weekdays.each do |weekday|
-                  - room_booking = @room_bookings.where(date: weekday, hour: schedule, room: @room)
-                  - if room_booking.empty?
-                    td
-                      a href="#" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }" data-reserve-room=0 class="cpy-reserve-room"
-                        | Disponível
-                  - else
-                    td
-                      p
-                        | Reservado para &nbsp;
-                        = current_user.email
-                        - if room_booking.first.user == current_user
-                          br
-                          a href="#" data-cancel-room-booking=0 data-room-booking="#{ room_booking.first.id }" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }"
-                            | Cancelar
+.page-header
+  h1
+    | Visualizar sala
+.row
+  .col-sm-12
+    h3
+      = @room.name
+.row
+  .col-sm-12
+    table.table.table-striped
+      thead
+        tr
+          td
+            | Horário
+          td
+            | Segunda
+          td
+            | Terça
+          td
+            | Quarta
+          td
+            | Quinta
+          td
+            | Sexta
+        tbody#js-chedules
+          - Room::SCHEDULES.each do | schedule|
+            tr
+              td
+                = schedule
+              - @weekdays.each do |weekday|
+                - room_booking = @room_bookings.where(date: weekday, hour: schedule, room: @room)
+                - if room_booking.empty?
+                  td
+                    a href="#" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }" data-reserve-room=0 class="cpy-reserve-room"
+                      | Disponível
+                - else
+                  td
+                    p
+                      | Reservado para &nbsp;
+                      = current_user.email
+                      - if room_booking.first.user == current_user
+                        br
+                        a href="#" data-cancel-room-booking=0 data-room-booking="#{ room_booking.first.id }" data-user="#{ current_user.email }" data-room-id="#{ @room.id }" data-date="#{ weekday }" data-hour="#{ schedule }"
+                          | Cancelar
 
 es6:
   import RoomBooking from "components/room_booking";
